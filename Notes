@@ -128,8 +128,11 @@ int ndigit[10];
            printf(" %i \n",ndigit[i]);
        }
 
-
+****
+* N*        ****
+****
        //todo: printing words and removing repeated spaces
+       // this takes sentence and correct the repeated space in them, it can also be changed to go with repeated words
        // testing with we   go to    the mall!
                        we   go to    the mall!
                        we   go to    the mall!
@@ -162,6 +165,9 @@ int ndigit[10];
              }
 -------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 -------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+This is for reading two chars at a time to determine if is a german char or not, if it is then it will replace it with the
+corresponding german char like ue is ü or oe is ö
+
 #include <stdio.h>
 #include <locale.h>
 #include <stdbool.h>
@@ -228,27 +234,6 @@ int zahl1;
 -------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 -------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 -------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 -------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
