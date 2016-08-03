@@ -1,0 +1,260 @@
+#include <stdio.h>
+#include <stdlib.h> // goes with return EXIT_SUCCESS;
+/* printing Fahrenheit-Celsius table
+    for fahrenheit = 0, 20 ... 300
+    Among others, printf also recognizes %0 for octal, %x for hexadecimal, %c for
+    character, %8 for character string, and %% for" itself.  */
+
+    float  fahr, celsius; // if we want a flating point values
+    int lower, upper , step;
+
+    lower = 0; // lower limit of the temperature table
+    upper = 300; // upper limit of the temperature table
+    step = 20; // step size
+
+    fahr = lower;
+    while (fahr <= upper){
+        celsius = 5 * (fahr -32)/9;
+        printf("Fahrenheit: %3.0f\t Celsius: %6.1f\n",fahr,celsius); //seting with for d will make formating nice.
+        //printf("%d ",fahr); // printing numbers on the same-line
+        fahr += step;
+    }
+/* Among others, printf also recognizes %0 for octal, %x for hexadecimal, %c for
+    character, %s for character string, and %% for % itself.
+    This can be used to covert numbers in to octal, Hexadecimal, char and others.
+ */
+    printf("%o\n",11); // convert 11 decimal to Octal -> 13
+    printf("%x",15);
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                                    Symbolic constants
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//Todo: Examples:
+#define LOWER 0     //1* lower limit of table *1
+#define UPPER 300   //1* upper limit *1
+#define STEP 20     //1* step size *1
+
+The quantities LOWER, UPPER and STEP are symbolic constants, not variables,
+so they do not appear in declarations. Symbolic constant names are conventionally
+written in upper case so they can be readily distinguished from lower case
+variable names. Notice that there is no semicolon at the end of a Idefine
+line.
+
+//Todo:  Character Input and Output
+//Todo: 1.getchar() (to read the next input-character from the keyboard) 2.putchar(char) (to write the character)
+    // we are not using char here because char is not big enough to hold EOF value and any possible char value.
+    //EOFis an integer defined in <stdio.h>
+    int c;
+    c = getchar(); // this will automatically call for keyboard input
+    while (c 1= EOF) {
+        putchar(c); // will display to the terminal
+        c = getchar ();
+    }
+
+    //todo: a better way
+        int c;
+        while ((c = getchar) != EOF){
+            putchar(c);
+        }
+
+//todo: long long nc; printf ("%ld\n", nc l)
+creating for loop in C
+for (nc = 0; getchar() 1= EOF; ++nc) /// empty body..null statement
+    ;
+
+//todo: printing words line by line
+#define OUT 0 // out of text
+#define IN 1 // in text
+
+    int a;
+    while ((a = getchar()) != EOF){
+        if ( a == ' ' || a == '\n' || a == '\t'){
+            printf("\n");
+        }
+        putchar(a);
+    }
+
+    //todo: counting words and characters, newlines, tabs and space
+    #define IN 1 /* inside a word */
+    #define OUT 0 /* outside a word */
+    /* count lines, words, and characters in input */
+    int c, nl, nw, nc, state;
+        state = OUT;
+        nl = nw = nc = 0;
+        while ((c = getchar()) != EOF) {
+            ++nc;
+            if (c == '\n')
+                ++nl;
+            if (c == ' ' || c == '\n' || c == '\t')
+                state = OUT;
+            else if (state == OUT) {
+                state = IN;
+                ++nw;
+            }
+        }
+        printf("%d %d %d\n", nl, nw, nc);
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//todo: creating arrays use sizeof(array) to find the length of array with %lu or %zu
+int ndigit[10];
+
+    for (int i = 0; i < 10; ++i) {
+        ndigit[i] = 0;
+    }
+
+   printf("%lu", sizeof(ndigit)); //use lu for unassigned long d or i will not work
+
+   //todo: counting digits and characters and space NOTE: the input should be directed with < tet.txt
+   int a;
+       //char v = 'x';
+       int c = 0;
+       int s = 0;
+       int ndigit[10];
+
+       for (int j = 0; j < 10; ++j) {
+           ndigit[j] =0;
+       }
+       while ((a = getchar()) != EOF){
+           if (a == ' ' || a == '\t' || a == '\n'){
+            ++s;
+           } else if (a >= '0' && a <= '9'){
+               ++ndigit[a - '0'];
+           } else{
+               ++c;
+           }
+       }
+       printf("char: %d others: %d\n",c,s);
+       printf("Digit: ");
+       for (int i = 0; i < sizeof(ndigit); ++i) {
+           printf(" %i \n",ndigit[i]);
+       }
+
+
+       //todo: printing words and removing repeated spaces
+       // testing with we   go to    the mall!
+                       we   go to    the mall!
+                       we   go to    the mall!
+
+        int c;
+           while ((c = getchar()) != EOF) {
+               if (c == ' ') {
+                   while ((c = getchar()) == ' ');
+                   putchar(' ');
+                   if (c == EOF) break;
+               }
+               putchar(c);
+           }
+
+
+         //or:
+         #define BLANK '-' // with char too char bl = '-'; or with integer
+             int c;
+             int lastChar = BLANK;
+             while ((c = getchar())!= EOF){
+                 if(c == ' '){
+                     if (lastChar != ' '){
+                         putchar(c);
+                     }
+                 } else{
+                     putchar(c);
+
+                 }
+                 lastChar = c;
+             }
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#include <stdio.h>
+#include <locale.h>
+#include <stdbool.h>
+int c;
+    int nex;
+    int waste = 'n';
+    setlocale(LC_ALL, "");
+    while ((c = getchar()) != EOF && (nex = getchar()) != true){ // or (EOF || ' ')
+        if (c == 'u'){
+            if (nex == 'e') {
+                waste = nex;
+                //putchar(*v);
+                printf("%ls",L"ü");
+            } else{
+                putchar(c);
+            }
+        }else{
+            putchar(c);
+            putchar(nex);
+
+        }
+
+    }
+    printf("\n");
+
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+int zahl1;
+    /*int zahl2;
+    printf("Geben Sie ein Zahl biite\n Zahl1: ");
+    scanf("%d",&zahl1);
+    printf("zahl1: ");
+    scanf("%d",&zahl2);
+    printf("Die Zahl, die angegeben war\n Zahl1: %d \n Zahl2: %d\n",zahl1,zahl2);
+    printf("%d x %d = %d",zahl1,zahl2,(zahl1*zahl2));*/
+    printf("Die Zahl ist: ");
+    scanf("%d",&zahl1);
+    /*int i = 1;
+    *//*gib ein zahl von 1 bis zahl zurueck*//*
+    while (i <= zahl1){
+        printf("%d ",i);
+        i++;
+    }
+
+    while (zahl1 >=1){
+        printf("%d ",zahl1);
+        zahl1--;
+    }
+    printf("\n");*/
+    int i = 0;
+    int start = 1;
+    while (zahl1 >= start) {
+        while (i < start){
+            printf("%c",'*');
+            i++;
+        }
+        i = 0;
+        start += 1;
+        printf("\n");
+    }
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                            Working with scanf();
+-------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+it takes the "%d" digit or deciaml and wait for input from the keyboard and will assign it to the value &value
+int var;
+scanf("%d",&var);
+
