@@ -17,7 +17,17 @@ int main() {
         start += 1;
         printf("\n");
     }*/
-
+/*
+*
+**
+***
+****
+*****
+****
+***
+**
+*
+*/
 
     for (int j = 1; j <= zahl1; ++j) {
         for (int i = 1; i <= j; ++i) {
@@ -25,7 +35,13 @@ int main() {
         }
         printf("\n");
     }
-    for (int j = zahl1 -1; j >= 1; --j) {
+    
+    /*
+****
+***
+**
+*  */
+    for (int j = zahl1 -1; j >= 1; --j) {   
         for (int i = 1; i <= j; ++i) {
             printf("%c",'*');
         }
