@@ -1,6 +1,4 @@
 #include <stdio.h>
-
-
 /*
 Created by Addo Dennis on 03/08/16.
  shifting every element in an array to one position to the right
