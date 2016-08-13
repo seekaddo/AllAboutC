@@ -9,6 +9,8 @@
 int getfrac(double num);
 long gcd(int a, int b);
 bool isDecimal(double a);
+
+//Main here
 int main(){
     getfrac(3.4);             //17/5
     return 0;
