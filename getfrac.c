@@ -12,7 +12,7 @@ bool isDecimal(double a);
 
 //Main here
 int main(){
-    getfrac(3.4);             //17/5
+    getfrac(3.4);             //17/5 and getfrac(0.96875) is 31/32
     return 0;
 }
 
