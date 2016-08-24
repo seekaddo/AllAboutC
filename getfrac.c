@@ -26,10 +26,15 @@ int getfrac(double num){
     long gc;
 
     givenNum = num;
-    while (!isDecimal(givenNum)){
+    /*while (!isDecimal(givenNum)){
         givenNum = givenNum * 10;
         count += 1;
-    }
+    }*/
+    
+    // more compact
+    do givenNum = givenNum *10, count +=1;
+    while (!isDecimal(givenNum));
+    
     a = (int)givenNum;
     b = (int)(pow(10,count));
     gc = gcd(a,b);                    // the common divisor from the two numbers
