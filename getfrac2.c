@@ -35,12 +35,5 @@ int getfrac(double value){
 
 // todo: getting the GCD commond -divisor
 long gcd(int a, int b){
-    while (a != b){
-        if(a > b){
-            a = a - b;
-        } else{
-            b = b - a;
-        }
-    }
-    return a;
+    return b == 0?a: gcd(b,a%b);
 }
